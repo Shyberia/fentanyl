@@ -1,14 +1,13 @@
 package com.fentanyl.items;
 
 import com.fentanyl.Fentanyl;
+import com.fentanyl.blocks.FentCrop;
+import com.fentanyl.blocks.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 //import net.minecraft.component.type.FoodComponent;
-import net.minecraft.item.FoodComponent;
+import net.minecraft.item.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -30,7 +29,10 @@ public class ModItems {
             new fentanyl(new Item.Settings().food(Fent_Food)),
             "fentanyl"
     );
-
+    public static final Item FentSeeds = register(
+            new AliasedBlockItem(ModBlocks.Fent_Crop,
+            new Item.Settings()),
+            "fent_seeds");
 
     public static Item register(Item item, String id) {
         // Create the identifier for the item.
@@ -45,5 +47,6 @@ public class ModItems {
     public static void initialize(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((itemGroup)-> itemGroup.add(ModItems.fentClump));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register((itemGroup)->itemGroup.add(ModItems.Fent));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register((itemGroup)->itemGroup.add(ModItems.FentSeeds));
     }
 }
