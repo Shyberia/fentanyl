@@ -22,7 +22,7 @@ public class ModItems {
             .build();
 
     public static final Item fentClump = register(
-            new Item(new Item.Settings()),
+            new fentClump(new Item.Settings()),
             "fent_clump"
     );
     public static final Item Fent = register(
